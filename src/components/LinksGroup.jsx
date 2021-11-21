@@ -1,4 +1,4 @@
-export default function LinksGroup({ linkGroups, onClick }) {
+export default function LinksGroup({ linkGroups = [], onClick }) {
   return (
     <>
       {linkGroups.map((linkGroup) => (

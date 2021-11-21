@@ -4,7 +4,7 @@ import { ReactComponent as Phone } from "./icons/Phone.svg";
 export default function Navigation({ onOpenMenu }) {
   const Title = () => (
     <div className="text-primary-600 text-center text-2xl font-bold">
-      {title || "Title"}
+      {"Title"}
     </div>
   );
 
