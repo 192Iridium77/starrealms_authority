@@ -1,28 +1,37 @@
-## Upcoming components:
+## TODO Features:
 
-- Homepage Header
-- Socials Block
-- Media Carousel
-- CTA Block
-- Accordion
-- Google Maps
-- Subscribe
-- UpNext
+- Local Storage to preserve game histories across matches
+- Move Next button onto player cards
+- Custom input option for modifying authority
+- New Game button to reset with current players
+- toggle flag to show/hide turn tracking
+- highlight current player turn
+- Turn count should increase after all players have finished their turn
+- options for choosing who goes first
+- option to decide who goes first randomly
+- Implement tooltips
 
-## Potential Upgrades:
+## UX improvements
 
-- Gallery Filters
-- Automate Webp optimisation
-- Hook up CMS
-- Articles
-- Events
-- metatags in CMS
-- Site search
+- Bigger +/- buttons
+- Round +/- buttons (fits fingers better on mobile)
+- Next turn button needs feedback on click
+- Sounds on the +/- buttons
 
-## Future Features:
+## Bugs
 
-- e-commerce
-- custom forms
+- history shows turn 1 twice
+- Users highligh the authority text when tapping too fast
+- when between 30-40 authority, white text lacks contrast
+- images need to be pre-loaded so they don't block while user adjusts authority
+
+## Future Features
+
+- Graph history in a new tab
+- Set up number of players
+- Celebrate winner effects (eg. confetti)
+
+---
 
 # Getting Started with Create React App
 
