@@ -3,7 +3,6 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 
 import Navigation from "./components/Navigation";
-import Header from "./components/Header";
 import NewGame from "./components/NewGame";
 import PlayerAuthority from "./components/PlayerAuthority";
 
