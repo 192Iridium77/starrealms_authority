@@ -30,6 +30,11 @@
 - Graph history in a new tab
 - Set up number of players
 - Celebrate winner effects (eg. confetti)
+- Options to invert player view
+- track a single player and use multiple phones (supports many players this way)
+- PWA
+- offline mode
+- custom starting authority
 
 ---
 
