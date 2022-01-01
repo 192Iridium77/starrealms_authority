@@ -10,10 +10,14 @@ module.exports = {
       colors: {
         primary: {
           100: "#cccccc",
-          600: "#3e7e95",
+          600: "#CC0033",
         },
         secondary: {
           500: "#99CC99",
+        },
+        tertiary: {
+          800: "#333333",
+          300: "#595959",
         },
       },
       aspectRatio: {
@@ -24,6 +28,10 @@ module.exports = {
         "3/2": [3, 2],
         "4/5": [4, 5],
         "1/2": [1, 2],
+      },
+      height: {
+        "70vh": "70vh",
+        "50vh": "50vh",
       },
     },
   },

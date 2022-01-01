@@ -13,6 +13,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #333333;
+  color: white;
 }
 
 code {
@@ -70,4 +72,13 @@ ul {
 
 li {
   @apply list-disc;
+}
+
+.primary-button {
+  @apply bg-primary-600;
+  @apply px-12;
+  @apply py-4;
+  @apply rounded-sm;
+  @apply uppercase;
+  @apply font-bold;
 }
