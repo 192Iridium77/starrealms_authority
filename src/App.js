@@ -17,12 +17,20 @@ export default function App() {
   const [showHistory, setShowHistory] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
+  const startAudio = new Audio("/sfx/start_game_2.wav");
+  startAudio.volume = 0.5;
+
   const onSave = (data) => {
     setHistory([data]);
     setGame(data);
+    startAudio.play();
   };
 
+  const clickAudio = new Audio("/sfx/click_1.wav");
+  clickAudio.volume = 0.5;
+
   const nextTurn = () => {
+    clickAudio.play();
     setHistory((prevState) => [...prevState, game]);
     setGame((prevState) => ({ ...prevState, turn: prevState.turn + 1 }));
   };

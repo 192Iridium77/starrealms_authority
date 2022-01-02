@@ -1,14 +1,9 @@
 function PlayerAuthority({ player, onChangeAuthority }) {
-  const onClick1 = (newValue) => {
-    onChangeAuthority(newValue);
-    // changeAuthority(newValue);
-  };
-
   const PlusIcon = () => {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-4 w-4"
+        className="h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -27,7 +22,7 @@ function PlayerAuthority({ player, onChangeAuthority }) {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        className="h-4 w-4"
+        className="h-6 w-6"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -42,9 +37,32 @@ function PlayerAuthority({ player, onChangeAuthority }) {
     );
   };
 
+  const laserAudio = new Audio("/sfx/laser_1.mp3");
+  laserAudio.volume = 0.2;
+  const authorityAudio = new Audio("/sfx/authority_gain_1.wav");
+  authorityAudio.volume = 0.9;
+  const explosionAudio = new Audio("/sfx/explosion_1.mp3");
+  explosionAudio.volume = 0.5;
+
+  const onAddAuthority = () => {
+    authorityAudio.play();
+    onChangeAuthority(player.authority + 1);
+  };
+
+  const onTakeAuthority = () => {
+    laserAudio.play();
+    onChangeAuthority(player.authority - 1);
+  };
+
   const roundAuth = () => {
     if (player.authority > 50) return 50;
-    if (player.authority <= 0) return 0;
+    if (player.authority === 0) {
+      setTimeout(() => {
+        explosionAudio.play();
+      }, 400);
+      return 0;
+    }
+    if (player.authority < 0) return 0;
     return Math.ceil(player.authority / 10) * 10;
   };
 
@@ -67,8 +85,8 @@ function PlayerAuthority({ player, onChangeAuthority }) {
         >
           <div>
             <button
-              className="bg-primary-600 font-bold w-10 h-10 flex justify-center items-center"
-              onClick={() => onClick1(player.authority + 1)}
+              className="bg-primary-600 font-bold w-16 h-16 rounded-full flex justify-center items-center"
+              onClick={onAddAuthority}
             >
               <PlusIcon></PlusIcon>
             </button>
@@ -86,8 +104,8 @@ function PlayerAuthority({ player, onChangeAuthority }) {
           </div>
           <div>
             <button
-              className="bg-primary-600 font-bold w-10 h-10 flex justify-center items-center"
-              onClick={() => onClick1(player.authority - 1)}
+              className="bg-primary-600 font-bold w-16 h-16 rounded-full flex justify-center items-center"
+              onClick={onTakeAuthority}
             >
               <MinusIcon></MinusIcon>
             </button>
