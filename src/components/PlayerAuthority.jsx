@@ -91,7 +91,7 @@ function PlayerAuthority({ player, onChangeAuthority }) {
               <PlusIcon></PlusIcon>
             </button>
           </div>
-          <div className="w-32 lg:w-40 h-24 lg:h-32 relative">
+          <div className="w-32 lg:w-40 h-24 lg:h-32 relative select-none">
             <img
               width="100%"
               className="absolute inset-0 z-0"
