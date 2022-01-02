@@ -1,6 +1,6 @@
 ## TODO Features:
 
-- Show modal menu float button on mobile (full screen overlay)
+- [critical] Show modal menu float button on mobile (full screen overlay)
 - Move Next button onto player cards
 - Custom input option for modifying authority
 - toggle flag to show/hide turn tracking
