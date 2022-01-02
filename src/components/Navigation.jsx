@@ -1,4 +1,4 @@
-// import { ReactComponent as Menu } from "./icons/Menu.svg";
+import { ReactComponent as Cog } from "./icons/Cog.svg";
 
 export default function Navigation({ onOpenMenu }) {
   const Title = () => (
@@ -20,9 +20,11 @@ export default function Navigation({ onOpenMenu }) {
             <Title />
           </div>
           <div className="flex gap-4">
-            {/* <button className="w-6 h-6" onClick={onOpenMenu}>
-              <Menu />
-            </button> */}
+            <button className="p-2" onClick={onOpenMenu}>
+              <div className="w-8 h-8">
+                <Cog />
+              </div>
+            </button>
           </div>
         </div>
       </div>

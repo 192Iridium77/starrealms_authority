@@ -1,3 +1,4 @@
+import { usePersistedState } from "./usePersistedState";
 import { useState } from "react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
@@ -5,12 +6,16 @@ import "swiper/swiper.min.css";
 import Navigation from "./components/Navigation";
 import NewGame from "./components/NewGame";
 import PlayerAuthority from "./components/PlayerAuthority";
+import Modal from "./components/Modal";
+import History from "./components/History";
 
 export default function App() {
-  const [showNewGame, setShowNewGame] = useState(false);
+  const [showNewGame, setShowNewGame] = usePersistedState(false, "showNewGame");
+  const [game, setGame] = usePersistedState(undefined, "game");
+  const [history, setHistory] = usePersistedState(undefined, "history");
+
   const [showHistory, setShowHistory] = useState(false);
-  const [game, setGame] = useState();
-  const [history, setHistory] = useState();
+  const [showMenu, setShowMenu] = useState(false);
 
   const onSave = (data) => {
     setHistory([data]);
@@ -29,10 +34,22 @@ export default function App() {
     }));
   };
 
+  const onShowMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const clearPersistedState = () => {
+    setShowMenu(false);
+    setShowHistory(false);
+    setHistory(undefined);
+    setGame(undefined);
+    setShowNewGame(true);
+  };
+
   return (
     <div>
       <div className="hidden lg:block">
-        <Navigation />
+        <Navigation onOpenMenu={onShowMenu} />
       </div>
       <div>
         {game ? (
@@ -65,12 +82,6 @@ export default function App() {
                 <button onClick={nextTurn} className="py-1 px-2 bg-primary-600">
                   Next Turn
                 </button>
-                <button
-                  onClick={() => setShowHistory(!showHistory)}
-                  className="py-1 px-2 underline"
-                >
-                  Show History
-                </button>
               </div>
             </div>
           </>
@@ -90,79 +101,41 @@ export default function App() {
           </div>
         )}
       </div>
-      {showHistory && (
-        <>
-          <div className="absolute inset-0 flex justify-center items-center z-10">
-            <div className="bg-tertiary-300">
-              <div className="text-2xl font-bold p-8">History</div>
-              <div
-                className="px-8"
-                style={{
-                  overflowY: "auto",
-                  minWidth: "600px",
-                  maxHeight: "50vh",
-                  paddingTop: "1px",
-                  paddingBottom: "1px",
-                }}
-              >
-                <div className="flex uppercase">
-                  <div
-                    className="w-4/12 p-2 bg-tertiary-800"
-                    style={{ outline: "1px solid white" }}
-                  >
-                    Turn
-                  </div>
-                  <div
-                    className="w-4/12 p-2 bg-tertiary-800"
-                    style={{ outline: "1px solid white" }}
-                  >
-                    P1 Authority
-                  </div>
-                  <div
-                    className="w-4/12 p-2 bg-tertiary-800"
-                    style={{ outline: "1px solid white" }}
-                  >
-                    P2 Authority
-                  </div>
-                </div>
-                {history.map((game) => (
-                  <div className="flex" key={game.turn}>
-                    <div
-                      className="w-4/12 p-2 bg-tertiary-800"
-                      style={{ outline: "1px solid white" }}
-                    >
-                      {game?.turn}
-                    </div>
-                    <div
-                      className="w-4/12 p-2 bg-tertiary-800"
-                      style={{ outline: "1px solid white" }}
-                    >
-                      {game?.player1.authority}
-                    </div>
-                    <div
-                      className="w-4/12 p-2 bg-tertiary-800"
-                      style={{ outline: "1px solid white" }}
-                    >
-                      {game?.player2.authority}
-                    </div>
-                  </div>
-                ))}
+      {showMenu && (
+        <Modal>
+          {showHistory ? (
+            <History
+              history={history}
+              onBack={() => setShowHistory(!showHistory)}
+            ></History>
+          ) : (
+            <>
+              <div className="text-2xl font-bold p-8">Settings</div>
+              <div className="px-8 flex justify-center flex-col">
+                <button
+                  onClick={() => setShowHistory(!showHistory)}
+                  className="px-4 py-3 bg-primary-600 block"
+                >
+                  Match History
+                </button>
+                <button
+                  onClick={clearPersistedState}
+                  className="px-4 py-3 bg-primary-600 block mt-4"
+                >
+                  New Game
+                </button>
               </div>
               <div className="flex justify-end p-8">
                 <button
-                  onClick={() => setShowHistory(!showHistory)}
+                  onClick={() => setShowMenu(!showMenu)}
                   className="px-2 py-1 bg-primary-600"
                 >
                   Close
                 </button>
               </div>
-            </div>
-          </div>
-          <div
-            className="absolute inset-0"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-          ></div>
-        </>
+            </>
+          )}
+        </Modal>
       )}
     </div>
   );
