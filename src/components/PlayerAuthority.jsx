@@ -1,3 +1,10 @@
+const laserAudio = new Audio("/sfx/laser_1.mp3");
+laserAudio.volume = 0.2;
+const authorityAudio = new Audio("/sfx/authority_gain_1.wav");
+authorityAudio.volume = 0.9;
+const explosionAudio = new Audio("/sfx/explosion_1.mp3");
+explosionAudio.volume = 0.5;
+
 function PlayerAuthority({ player, onChangeAuthority }) {
   const PlusIcon = () => {
     return (
@@ -36,13 +43,6 @@ function PlayerAuthority({ player, onChangeAuthority }) {
       </svg>
     );
   };
-
-  const laserAudio = new Audio("/sfx/laser_1.mp3");
-  laserAudio.volume = 0.2;
-  const authorityAudio = new Audio("/sfx/authority_gain_1.wav");
-  authorityAudio.volume = 0.9;
-  const explosionAudio = new Audio("/sfx/explosion_1.mp3");
-  explosionAudio.volume = 0.5;
 
   const onAddAuthority = () => {
     authorityAudio.play();
