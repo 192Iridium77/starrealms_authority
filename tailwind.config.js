@@ -33,6 +33,12 @@ module.exports = {
         "70vh": "70vh",
         "50vh": "50vh",
       },
+      maxHeight: {
+        "50vh": "50vh",
+      },
+      minWidth: {
+        "600px": "600px",
+      },
     },
   },
   variants: {

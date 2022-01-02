@@ -9,6 +9,8 @@ import PlayerAuthority from "./components/PlayerAuthority";
 import Modal from "./components/Modal";
 import History from "./components/History";
 
+import { ReactComponent as Cog } from "./components/icons/Cog.svg";
+
 export default function App() {
   const [showNewGame, setShowNewGame] = usePersistedState(false, "showNewGame");
   const [game, setGame] = usePersistedState(undefined, "game");
@@ -62,7 +64,7 @@ export default function App() {
       <div>
         {game ? (
           <>
-            <div className="lg:container flex flex-col sm:flex-row lg:gap-12">
+            <div className="lg:container flex flex-col sm:flex-row lg:gap-12 relative">
               <div className="sm:w-6/12 flex justify-center">
                 <div className="h-full w-full" style={{ maxWidth: "420px" }}>
                   <PlayerAuthority
@@ -83,6 +85,12 @@ export default function App() {
                   ></PlayerAuthority>
                 </div>
               </div>
+              <button
+                onClick={() => setShowMenu(!showMenu)}
+                className="absolute bottom-0 right-0 p-4 lg:hidden"
+              >
+                <Cog className="w-8 h-8" />
+              </button>
             </div>
             <div className="hidden lg:block container">
               <div className="flex items-center my-12 gap-8">

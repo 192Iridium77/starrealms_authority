@@ -1,6 +1,10 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+
+import { ReactComponent as SwitchVertical } from "./icons/SwitchVertical.svg";
 
 function PlayerAuthority({ player, onChangeAuthority }) {
+  const [flip, setFlip] = useState(false);
+
   const laserAudio = useMemo(() => {
     const audio = new Audio("/sfx/laser_1.mp3");
     audio.volume = 0.2;
@@ -92,7 +96,9 @@ function PlayerAuthority({ player, onChangeAuthority }) {
   return (
     <div className="bg-black p-1 lg:p-4 h-50vh sm:h-screen lg:h-70vh">
       <div
-        className="relative h-full p-8 bg-no-repeat bg-center bg-cover"
+        className={`relative h-full p-8 bg-no-repeat bg-center bg-cover transform ${
+          flip && "rotate-180"
+        }`}
         style={{
           backgroundImage: getImage(),
         }}
@@ -130,6 +136,12 @@ function PlayerAuthority({ player, onChangeAuthority }) {
             </button>
           </div>
         </div>
+        <button
+          onClick={() => setFlip(!flip)}
+          className="lg:hidden absolute bottom-0 left-0 p-4"
+        >
+          <SwitchVertical className="w-8 h-8" />
+        </button>
       </div>
     </div>
   );
