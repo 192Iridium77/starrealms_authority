@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { ReactComponent as SwitchVertical } from "./icons/SwitchVertical.svg";
 import { Howl } from "howler";
@@ -6,26 +6,18 @@ import { Howl } from "howler";
 function PlayerAuthority({ player, onChangeAuthority }) {
   const [flip, setFlip] = useState(false);
 
-  var laserAudio = new Howl({
+  const laserAudio = new Howl({
     src: ["/sfx/laser_1.mp3"],
     volume: 0.2,
   });
-
-  // const laserAudio = useMemo(() => {
-  //   const audio = new Audio("/sfx/laser_1.mp3");
-  //   audio.volume = 0.2;
-  //   return audio;
-  // }, []);
-  // const authorityAudio = useMemo(() => {
-  //   const audio = new Audio("/sfx/authority_gain_1.wav");
-  //   audio.volume = 0.9;
-  //   return audio;
-  // }, []);
-  const explosionAudio = useMemo(() => {
-    const audio = new Audio("/sfx/explosion_1.mp3");
-    audio.volume = 0.5;
-    return audio;
-  }, []);
+  const authorityAudio = new Howl({
+    src: ["/sfx/authority_gain_1.wav"],
+    volume: 0.9,
+  });
+  const explosionAudio = new Howl({
+    src: ["/sfx/explosion_1.mp3"],
+    volume: 0.6,
+  });
 
   const PlusIcon = () => {
     return (
@@ -66,7 +58,7 @@ function PlayerAuthority({ player, onChangeAuthority }) {
   };
 
   const onAddAuthority = () => {
-    // authorityAudio.play();
+    authorityAudio.play();
     onChangeAuthority(player.authority + 1);
   };
 
