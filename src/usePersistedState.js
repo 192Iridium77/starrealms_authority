@@ -1,10 +1,10 @@
-import react from 'react'
+import react from "react";
 
 export function usePersistedState(defaultValue, key) {
-    const storageKey = `star_realms_authority_tracker_${key}`
+  const storageKey = `star_realms_authority_tracker_${key}`;
   const [value, setValue] = react.useState(() => {
     const persistedValue = window.localStorage.getItem(storageKey);
-    return persistedValue !== null
+    return persistedValue !== "undefined"
       ? JSON.parse(persistedValue)
       : defaultValue;
   });
