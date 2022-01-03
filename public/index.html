@@ -20,11 +20,14 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Star Realms Authority Tracker</title>
-    <meta name="description" content="" />
+    <title>Authority Tracker</title>
+    <meta
+      name="description"
+      content="Star realms the card game tracker application to help track authority scores."
+    />
     <meta name="robots" content="index, follow" />
     <meta data-hid="keywords" name="keywords" content="" />
-    <meta name="og:title" property="og:title" content="Title" />
+    <meta name="og:title" property="og:title" content="Authority Tracker" />
     <meta
       data-hid="ogKeywords"
       name="og:keywords"
@@ -65,17 +68,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id="></script>
     <script>
