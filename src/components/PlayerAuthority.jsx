@@ -1,9 +1,15 @@
 import { useMemo, useState } from "react";
 
 import { ReactComponent as SwitchVertical } from "./icons/SwitchVertical.svg";
+import { Howl } from "howler";
 
 function PlayerAuthority({ player, onChangeAuthority }) {
   const [flip, setFlip] = useState(false);
+
+  var laserAudio = new Howl({
+    src: ["/sfx/laser_1.mp3"],
+    volume: 0.2,
+  });
 
   // const laserAudio = useMemo(() => {
   //   const audio = new Audio("/sfx/laser_1.mp3");
@@ -65,7 +71,7 @@ function PlayerAuthority({ player, onChangeAuthority }) {
   };
 
   const onTakeAuthority = () => {
-    // laserAudio.play();
+    laserAudio.play();
     onChangeAuthority(player.authority - 1);
   };
 
