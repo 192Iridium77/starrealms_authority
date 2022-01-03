@@ -28,11 +28,11 @@ export default function App() {
     startAudio.play();
   };
 
-  const clickAudio = new Audio("/sfx/click_1.wav");
-  clickAudio.volume = 0.5;
+  // const clickAudio = new Audio("/sfx/click_1.wav");
+  // clickAudio.volume = 0.5;
 
   const nextTurn = () => {
-    clickAudio.play();
+    // clickAudio.play();
     setHistory((prevState) => [...prevState, game]);
     setGame((prevState) => ({ ...prevState, turn: prevState.turn + 1 }));
   };

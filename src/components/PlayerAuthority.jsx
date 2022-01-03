@@ -5,16 +5,16 @@ import { ReactComponent as SwitchVertical } from "./icons/SwitchVertical.svg";
 function PlayerAuthority({ player, onChangeAuthority }) {
   const [flip, setFlip] = useState(false);
 
-  const laserAudio = useMemo(() => {
-    const audio = new Audio("/sfx/laser_1.mp3");
-    audio.volume = 0.2;
-    return audio;
-  }, []);
-  const authorityAudio = useMemo(() => {
-    const audio = new Audio("/sfx/authority_gain_1.wav");
-    audio.volume = 0.9;
-    return audio;
-  }, []);
+  // const laserAudio = useMemo(() => {
+  //   const audio = new Audio("/sfx/laser_1.mp3");
+  //   audio.volume = 0.2;
+  //   return audio;
+  // }, []);
+  // const authorityAudio = useMemo(() => {
+  //   const audio = new Audio("/sfx/authority_gain_1.wav");
+  //   audio.volume = 0.9;
+  //   return audio;
+  // }, []);
   const explosionAudio = useMemo(() => {
     const audio = new Audio("/sfx/explosion_1.mp3");
     audio.volume = 0.5;
@@ -60,20 +60,12 @@ function PlayerAuthority({ player, onChangeAuthority }) {
   };
 
   const onAddAuthority = () => {
-    authorityAudio.play();
+    // authorityAudio.play();
     onChangeAuthority(player.authority + 1);
   };
 
   const onTakeAuthority = () => {
-    if (
-      laserAudio &&
-      laserAudio.currentTime > 0 &&
-      !laserAudio.paused &&
-      !laserAudio.ended &&
-      laserAudio.readyState > 2
-    )
-      laserAudio.load();
-    laserAudio.play();
+    // laserAudio.play();
     onChangeAuthority(player.authority - 1);
   };
 
