@@ -1,6 +1,5 @@
 ## TODO Features:
 
-- [critical] Show modal menu float button on mobile (full screen overlay)
 - Move Next button onto player cards
 - Custom input option for modifying authority
 - toggle flag to show/hide turn tracking
@@ -13,18 +12,13 @@
 ## Bugs
 
 - history shows turn 1 twice
-- when between 30-40 authority, white text lacks contrast
-- images need to be pre-loaded so they don't block while user adjusts authority
 
 ## Future Features
 
 - Graph history in a new tab
 - Set up number of players
 - Celebrate winner effects (eg. confetti, sounds)
-- Options/Button to invert player view
 - track a single player and use multiple phones (supports many players this way)
-- PWA
-- offline mode
 - custom starting authority
 
 ---
